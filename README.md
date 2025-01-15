@@ -93,6 +93,44 @@ python3 ./src/main.py ./data/fl1400.tsp -t -b -timeout=10
 python3 ./src/main.py ./data/a280.tsp -timeout=5
 ```
 
+# Como executar os experimentos
+
+## Passo a Passo
+
+1. O arquivo para realizar todos os testes para cada algoritmo é `experiment.py`, localizado na pasta `src`.
+
+3. Não é necessário o uso de argumentos para executar o programa, mas pode ser passado o seguinte argumento opcional:
+
+### Argumentos opcionais para tempo
+
+- **Opção:**
+  - `-timeout=<tempo>`: Define o tempo máximo de execução em segundos para cada algoritmo
+
+Caso não for passado um valor, cada algoritmo será rodado com o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
+
+
+### Formato Geral do Comando
+
+```bash
+python3 ./src/experiment.py [tempo]
+```
+
+4. Após a execução, os resultados serão printados no terminal e salvos no arquivo `results.csv`.
+
+##  Exemplos
+
+* Executa todas os testes da pasta `data` para cada algoritmo (timeout default = 30min):
+ 
+ ```bash
+python3 ./src/experiment.py
+```
+
+* Executa todas os testes da pasta `data` para cada algoritmo com timeout igual a 5 segundos:
+
+ ```bash
+python3 ./src/experiment.py -timeout=5
+```
+
 ## Colaboradores
 
 <table>
