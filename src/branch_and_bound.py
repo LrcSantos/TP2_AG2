@@ -1,7 +1,11 @@
 import math
+import time
 from heapq import heappush, heappop
 
 INF = float('inf')
+
+# Define o limite de tempo padrão global (em segundos)
+LIMIT = 30 * 60 # 30 min
 
 class Node:
     def __init__(self, bound, cost, level, path):
@@ -74,18 +78,33 @@ def greedy_tsp(adj):
     path.append(0)
     return path, cost
 
-def bnb_tsp(adj):
+def bnb_tsp(adj, timeout=None):
     """
     Resolve o TSP usando o algoritmo otimizado de Branch-and-Bound.
+    Interrompe se o tempo de execução exceder o limite (timeout).
     """
+    flag_erro = 0
+
+    timeout = timeout if timeout is not None else LIMIT
+    #print("timeout branch_and_bound = ", timeout)
+
     N = len(adj)
     pq = []
-
+    
+    # Inicia a contagem do tempo
+    start_time = time.time()
+    
     best_path, best_cost = greedy_tsp(adj)
     root = Node(bound(adj, [0], 0), 0, 0, [0])
     heappush(pq, root)
 
     while pq:
+        # Verifica o tempo decorrido
+        if time.time() - start_time > timeout:
+            print("Tempo limite excedido para o algoritmo Branch-and-Bound")
+            flag_erro = 1
+            return [], INF, flag_erro # Retorna uma solução inválida
+
         node = heappop(pq)
 
         # Apenas explora nós com bound menor que o melhor custo
@@ -107,4 +126,4 @@ def bnb_tsp(adj):
                                 child_node = Node(new_bound, new_cost, node.level + 1, new_path)
                                 heappush(pq, child_node)
 
-    return best_path, best_cost
+    return best_path, best_cost, flag_erro
