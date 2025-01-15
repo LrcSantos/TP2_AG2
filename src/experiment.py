@@ -105,7 +105,10 @@ def main():
 
     time_limit = args.timeout
 
-    print(f"time_limit = {time_limit} (tempo máximo de {time_limit} segundos de execução para cada algoritmo)\n")
+    if time_limit is not DEFAULT_TIME_LIMIT:
+        print(f"timeout = {time_limit} (tempo máximo de {time_limit} segundos de execução para cada algoritmo)\n")
+    else:
+        print("timeout = default (tempo máximo de 30 min de execução para cada algoritmo)\n")
 
     # Lista todos os arquivos .tsp no diretório de instâncias
     instances = [f for f in os.listdir(DATA_DIR) if f.endswith(".tsp")]
