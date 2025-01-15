@@ -4,9 +4,11 @@ Esse trabalho apresenta três algoritimos diferentes para o Problema do Caixeiro
 
 # Requisitos
 
-Para executar o programa, é necessário a biblioteca `networkx` instalada.
+Para executar o programa, é necessário a biblioteca `networkx` instalada. Para instalar a dependência, execute o comando:
 
-
+```bash
+pip install networkx
+```
 # Como executar o programa no terminal
 
 ## Passo a Passo
@@ -30,7 +32,7 @@ Caso não seja passado nenhuma opção de algoritmo, então todos os algoritmos 
 - **Opção:**
   - `-timeout=<tempo>`: Define o tempo máximo de execução em segundos para cada algoritmo
 
-Caso não for passado um valor, cada algoritm escolhido tem o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
+Caso não for passado um valor, cada algoritmo escolhido tem o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
 
 
 ### Formato Geral do Comando
@@ -83,6 +85,12 @@ python3 ./src/main.py ./data/fl1400.tsp -b -timeout=10
 
  ```bash
 python3 ./src/main.py ./data/fl1400.tsp -t -b -timeout=10
+```
+
+* Executa os algoritmos de Twice-Around-the-Tree, Christofides e Branch-and-Bound com timeout igual a 5 segundos:
+
+ ```bash
+python3 ./src/main.py ./data/a280.tsp -timeout=5
 ```
 
 ## Colaboradores
