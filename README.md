@@ -1,10 +1,10 @@
 # Trabalho Prático 2: Algoritmos II
 
-Esse trabalho apresenta três algoritimos diferentes para o Problema do Caixeiro Viajante, uma solução exata, baseada no algoritimo Branch-and-Bound, e duas soluções aproximadas, o algoritmo Twice-Around-the-Tree e o algoritmo de Christofides. O objetivo foi implementar os 3 algoritmos, e então fazer um relatório analisando suas soluções, em relação a suas diferenças entre desempenho, avaliando métricas de tempo, espaço e qualidade da solução.
+Esse trabalho apresenta três algoritmos diferentes para o Problema do Caixeiro Viajante, uma solução exata, baseada no algoritmo Branch-and-Bound, e duas soluções aproximadas, o algoritmo Twice-Around-the-Tree e o algoritmo de Christofides. O objetivo foi implementar os 3 algoritmos, e então fazer um relatório analisando suas soluções, em relação a suas diferenças entre desempenho, avaliando métricas de tempo, espaço e qualidade da solução.
 
 # Requisitos
 
-Para executar o programa, é necessário a biblioteca `networkx` instalada. Para instalar a dependência, execute o comando:
+Para executar o programa, é necessária a biblioteca `networkx` instalada. Para instalar a dependência, execute o comando:
 
 ```bash
 pip install networkx
@@ -25,14 +25,14 @@ pip install networkx
   - `-b`: Executar algoritmo Branch-and-Bound
   - `-all`: Executar todos os algoritmos (default)
 
-Caso não seja passado nenhuma opção de algoritmo, então todos os algoritmos serão executados, equivalente a opção "-all". Pode ser escolhido 1 ou 2 opções de algoritmos, ou seja, é possível rodar um individualmente ou fazer qualquer combinação entre dois parâmetros entre '-c', '-t', '-b', não importando ordem.
+Caso não sejam passadas nenhuma opção de algoritmo, então todos os algoritmos serão executados, equivalente a opção "-all". Pode ser escolhido 1 ou 2 opções de algoritmos, ou seja, é possível rodar um individualmente ou fazer qualquer combinação entre dois parâmetros entre '-c', '-t', '-b', não importando ordem.
 
 ### Argumentos opcionais para tempo
 
 - **Opção:**
   - `-timeout=<tempo>`: Define o tempo máximo de execução em segundos para cada algoritmo
 
-Caso não for passado um valor, cada algoritmo escolhido tem o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
+Caso não seja passado um valor, cada algoritmo escolhido tem o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
 
 
 ### Formato Geral do Comando
@@ -41,7 +41,7 @@ Caso não for passado um valor, cada algoritmo escolhido tem o tempo máximo de 
 python3 ./src/main.py ./data/teste < opções de algoritmos > [tempo] 
 ```
 
-4. Após a execução, os resultados serão printados no terminal.
+4. Após a execução, os resultados serão exibidos no terminal.
 
 ##  Exemplos
 
@@ -106,7 +106,7 @@ python3 ./src/main.py ./data/a280.tsp -timeout=5
 - **Opção:**
   - `-timeout=<tempo>`: Define o tempo máximo de execução em segundos para cada algoritmo
 
-Caso não for passado um valor, cada algoritmo será rodado com o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
+Caso não seja passado um valor, cada algoritmo será rodado com o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
 
 
 ### Formato Geral do Comando
@@ -115,7 +115,7 @@ Caso não for passado um valor, cada algoritmo será rodado com o tempo máximo 
 python3 ./src/experiment.py [tempo]
 ```
 
-4. Após a execução, os resultados serão printados no terminal e salvos no arquivo `results.csv`.
+4. Após a execução, os resultados serão exibidos no terminal e salvos no arquivo `results.csv`.
 
 ##  Exemplos
 
