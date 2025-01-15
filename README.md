@@ -1,6 +1,6 @@
 # Trabalho Prático 2: Algoritmos II
 
-Esse trabalho apresenta três algoritimos diferentes para o Problema do Caixeiro Viajante, uma solução exata, baseada no algoritimo Branch-and-Bound, e duas soluções aproximadas, o algoritmo Twice-Around-the-Tree e o algoritmo de Christofides. O objetivo foi fazer uma análise entre eles, em relação a suas diferenças entre desempenho, avaliando métricas de tempo, espaço e solução ótima.
+Esse trabalho apresenta três algoritimos diferentes para o Problema do Caixeiro Viajante, uma solução exata, baseada no algoritimo Branch-and-Bound, e duas soluções aproximadas, o algoritmo Twice-Around-the-Tree e o algoritmo de Christofides. O objetivo foi implementar os 3 algoritmos, e então fazer um relatório analisando suas soluções, em relação a suas diferenças entre desempenho, avaliando métricas de tempo, espaço e qualidade da solução.
 
 # Requisitos
 
