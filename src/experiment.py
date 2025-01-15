@@ -8,7 +8,7 @@ from twice_around_tree import twice_around_tree
 from branch_and_bound import bnb_tsp
 
 # Diretório contendo os arquivos de instâncias
-DATA_DIR = "../datanew"
+DATA_DIR = "../data"
 # Nome do arquivo CSV de resultados
 RESULTS_FILE = "../results/resultsnew.csv"
 # Tempo limite em segundos (30 minutos)
