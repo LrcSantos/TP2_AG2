@@ -14,13 +14,15 @@ Para executar o programa, é necessário a biblioteca `networkx` instalada.
 
 3. Use os argumentos abaixo para executar o programa:
 
-### Argumentos Obrigatórios
+### Argumentos 
 
 - **Opções para escolher qual algoritmo:**
-  - `-c`: executar algoritmo christofides
-  - `-t`: executar algoritmo twice_around_tree
-  - `-b`: executar algoritmo branch_and_bound
-  - `-all`: executar todos os algoritmos
+  - `-c`: executar algoritmo Christofides
+  - `-t`: executar algoritmo Twice-Around-the-Tree"
+  - `-b`: executar algoritmo Branch-and-Bound
+  - `-all`: executar todos os algoritmos (default)
+
+Caso não seja passado nenhuma opção de algoritmo, então todos os algoritmos serão executados, equivalente a opção "-all". Pode ser escolhido 1 ou 2 opções de algoritmos, ou seja, é possível rodar um individualmente ou fazer qualquer combinação entre dois parâmetros entre '-c', '-t', '-b', não importando ordem.
 
 ### Argumentos Opcionais
 
@@ -28,11 +30,10 @@ Para executar o programa, é necessário a biblioteca `networkx` instalada.
 ### Formato Geral do Comando
 
 ```bash
-python3 ./src/main.py ./data/teste -opcao 
+python3 ./src/main.py ./data/teste < opções > 
 ```
 
-4. Após a execução, o programa:
-  - Os resultados serão printados no terminal e salvos no arquivo `output.txt`.
+4. Após a execução, os resultados serão printados no terminal e salvos no arquivo `output.txt`.
 
 ##  Exemplos
  
@@ -42,6 +43,18 @@ python3 ./src/main.py ./data/a280.tsp -c
 
  ```bash
 python3 ./src/main.py ./data/fl1400.tsp -t
+```
+
+ ```bash
+python3 ./src/main.py ./data/fl1400.tsp -t -c
+```
+
+ ```bash
+python3 ./src/main.py ./data/fl1400.tsp -all
+```
+
+ ```bash
+python3 ./src/main.py ./data/fl1400.tsp
 ```
 
 ## Colaboradores
