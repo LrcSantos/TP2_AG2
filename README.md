@@ -60,37 +60,37 @@ python3 ./src/main.py ./data/a280.tsp -c
 * Executa o algoritmo de Twice-Around-the-Tree (timeout default = 30min):
 
  ```bash
-python3 ./src/main.py ./data/fl1400.tsp -t
+python3 ./src/main.py ./data/a280.tsp -t
 ```
 
 * Executa os algoritmos de Twice-Around-the-Tree e Christofides (timeout default = 30min para cada):
 
  ```bash
-python3 ./src/main.py ./data/fl1400.tsp -t -c
+python3 ./src/main.py ./data/a280.tsp -t -c
 ```
 
 * Executa os algoritmos de Twice-Around-the-Tree, Christofides e Branch-and-Bound (timeout default = 30min para cada):
 
  ```bash
-python3 ./src/main.py ./data/fl1400.tsp -all
+python3 ./src/main.py ./data/a280.tsp -all
 ```
 
 * Executa os algoritmos de Twice-Around-the-Tree, Christofides e Branch-and-Bound (timeout default = 30min para cada):
 
  ```bash
-python3 ./src/main.py ./data/fl1400.tsp
+python3 ./src/main.py ./data/a280.tsp
 ```
 
 * Executa o algoritmo de Branch-and-Bound com timeout igual a 10 segundos:
 
  ```bash
-python3 ./src/main.py ./data/fl1400.tsp -b -timeout=10
+python3 ./src/main.py ./data/a280.tsp -b -timeout=10
 ```
 
 * Executa os algoritmos de Twice-Around-the-Tree e Branch-and-Bound com timeout igual a 10 segundos:
 
  ```bash
-python3 ./src/main.py ./data/fl1400.tsp -t -b -timeout=10
+python3 ./src/main.py ./data/a280.tsp -t -b -timeout=10
 ```
 
 * Executa os algoritmos de Twice-Around-the-Tree, Christofides e Branch-and-Bound com timeout igual a 5 segundos:
@@ -102,7 +102,7 @@ python3 ./src/main.py ./data/a280.tsp -timeout=5
 * Executa o algoritmos Twice-Around-the-Tree com timeout igual a 1 segundo, ativando a saída detalhada:
 
  ```bash
-python3 ./src/main.py ./data_new/a280.tsp -t -timeout=1 -verbose
+python3 ./src/main.py ./data/a280.tsp -t -timeout=1 -verbose
 ```
 
 # Como executar os experimentos
