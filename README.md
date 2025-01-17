@@ -44,7 +44,7 @@ Caso não seja passado um valor, o programa irá exibir apenas o output padrão 
 ### Formato Geral do Comando
 
 ```bash
-python3 ./src/main.py ./data/teste < opções de algoritmos > [tempo] 
+python3 ./src/main.py ./data/teste < opções de algoritmos > [tempo] [verbose] 
 ```
 
 4. Após a execução, os resultados serão exibidos no terminal.
