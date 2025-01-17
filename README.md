@@ -27,13 +27,19 @@ pip install networkx
 
 Caso não sejam passadas nenhuma opção de algoritmo, então todos os algoritmos serão executados, equivalente a opção "-all". Pode ser escolhido 1 ou 2 opções de algoritmos, ou seja, é possível rodar um individualmente ou fazer qualquer combinação entre dois parâmetros entre '-c', '-t', '-b', não importando ordem.
 
-### Argumentos opcionais para tempo
+### Argumento opcional para tempo
 
 - **Opção:**
   - `-timeout=<tempo>`: Define o tempo máximo de execução em segundos para cada algoritmo
 
 Caso não seja passado um valor, cada algoritmo escolhido tem o tempo máximo de execução de 30min, passado esse tempo ele é abortado e os dados referentes à execução são colocados como NA (não-disponível). 
 
+### Argumento opcional para profiling
+
+- **Opção:**
+  - `-verbose`: Ativa a saída detalhada, profiling do código para identificar os gargalos.
+
+Caso não seja passado um valor, o programa irá exibir apenas o output padrão esperado.
 
 ### Formato Geral do Comando
 
@@ -93,6 +99,12 @@ python3 ./src/main.py ./data/fl1400.tsp -t -b -timeout=10
 python3 ./src/main.py ./data/a280.tsp -timeout=5
 ```
 
+* Executa o algoritmos Twice-Around-the-Tree com timeout igual a 1 segundo, ativando a saída detalhada:
+
+ ```bash
+python3 ./src/main.py ./data_new/a280.tsp -t -timeout=1 -verbose
+```
+
 # Como executar os experimentos
 
 ## Passo a Passo
@@ -112,7 +124,7 @@ Caso não seja passado um valor, cada algoritmo será rodado com o tempo máximo
 ### Formato Geral do Comando
 
 ```bash
-python3 ./src/experiment.py [tempo]
+python3 ./src/experiment.py [tempo] [verbose]
 ```
 
 4. Após a execução, os resultados serão exibidos no terminal e salvos no arquivo `results.csv`.
