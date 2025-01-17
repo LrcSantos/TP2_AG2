@@ -1,5 +1,7 @@
 import math
 import time
+import cProfile
+import pstats
 from heapq import heappush, heappop
 
 INF = float('inf')
@@ -78,52 +80,109 @@ def greedy_tsp(adj):
     path.append(0)
     return path, cost
 
-def bnb_tsp(adj, timeout=None):
+def bnb_tsp(adj, timeout=None, verbose=False):
     """
     Resolve o TSP usando o algoritmo otimizado de Branch-and-Bound.
     Interrompe se o tempo de execução exceder o limite (timeout).
     """
-    flag_erro = 0
 
-    timeout = timeout if timeout is not None else LIMIT
-    #print("timeout branch_and_bound = ", timeout)
+    if verbose == True:
+        profiler = cProfile.Profile()
+        profiler.enable()
 
-    N = len(adj)
-    pq = []
-    
-    # Inicia a contagem do tempo
-    start_time = time.time()
-    
-    best_path, best_cost = greedy_tsp(adj)
-    root = Node(bound(adj, [0], 0), 0, 0, [0])
-    heappush(pq, root)
+        flag_erro = 0
 
-    while pq:
-        # Verifica o tempo decorrido
-        if time.time() - start_time > timeout:
-            print("Tempo limite excedido para o algoritmo Branch-and-Bound")
-            flag_erro = 1
-            return [], INF, flag_erro # Retorna uma solução inválida
+        timeout = timeout if timeout is not None else LIMIT
+        #print("timeout branch_and_bound = ", timeout)
 
-        node = heappop(pq)
+        N = len(adj)
+        pq = []
+        
+        # Inicia a contagem do tempo
+        start_time = time.time()
+        
+        best_path, best_cost = greedy_tsp(adj)
+        root = Node(bound(adj, [0], 0), 0, 0, [0])
+        heappush(pq, root)
 
-        # Apenas explora nós com bound menor que o melhor custo
-        if node.bound < best_cost:
-            if node.level == N - 1:
-                last_to_start = adj[node.path[-1]][0]
-                current_cost = node.cost + last_to_start
-                if current_cost < best_cost:
-                    best_cost = current_cost
-                    best_path = node.path + [0]
-            else:
-                for i in range(N):
-                    if i not in node.path:
-                        new_path = node.path + [i]
-                        new_cost = node.cost + adj[node.path[-1]][i]
-                        if new_cost < best_cost:  # Poda imediata
-                            new_bound = bound(adj, new_path, new_cost)
-                            if new_bound < best_cost:
-                                child_node = Node(new_bound, new_cost, node.level + 1, new_path)
-                                heappush(pq, child_node)
+        while pq:
+            # Verifica o tempo decorrido
+            if time.time() - start_time > timeout:
+                print("Tempo limite excedido para o algoritmo Branch-and-Bound")
+                flag_erro = 1
+                return [], INF, flag_erro # Retorna uma solução inválida
 
-    return best_path, best_cost, flag_erro
+            node = heappop(pq)
+
+            # Apenas explora nós com bound menor que o melhor custo
+            if node.bound < best_cost:
+                if node.level == N - 1:
+                    last_to_start = adj[node.path[-1]][0]
+                    current_cost = node.cost + last_to_start
+                    if current_cost < best_cost:
+                        best_cost = current_cost
+                        best_path = node.path + [0]
+                else:
+                    for i in range(N):
+                        if i not in node.path:
+                            new_path = node.path + [i]
+                            new_cost = node.cost + adj[node.path[-1]][i]
+                            if new_cost < best_cost:  # Poda imediata
+                                new_bound = bound(adj, new_path, new_cost)
+                                if new_bound < best_cost:
+                                    child_node = Node(new_bound, new_cost, node.level + 1, new_path)
+                                    heappush(pq, child_node)
+
+        profiler.disable()
+        stats = pstats.Stats(profiler)
+        stats.strip_dirs()
+        stats.sort_stats(pstats.SortKey.TIME)
+        stats.print_stats()
+
+        return best_path, best_cost, flag_erro
+    else:
+        
+        flag_erro = 0
+
+        timeout = timeout if timeout is not None else LIMIT
+        #print("timeout branch_and_bound = ", timeout)
+
+        N = len(adj)
+        pq = []
+        
+        # Inicia a contagem do tempo
+        start_time = time.time()
+        
+        best_path, best_cost = greedy_tsp(adj)
+        root = Node(bound(adj, [0], 0), 0, 0, [0])
+        heappush(pq, root)
+
+        while pq:
+            # Verifica o tempo decorrido
+            if time.time() - start_time > timeout:
+                print("Tempo limite excedido para o algoritmo Branch-and-Bound")
+                flag_erro = 1
+                return [], INF, flag_erro # Retorna uma solução inválida
+
+            node = heappop(pq)
+
+            # Apenas explora nós com bound menor que o melhor custo
+            if node.bound < best_cost:
+                if node.level == N - 1:
+                    last_to_start = adj[node.path[-1]][0]
+                    current_cost = node.cost + last_to_start
+                    if current_cost < best_cost:
+                        best_cost = current_cost
+                        best_path = node.path + [0]
+                else:
+                    for i in range(N):
+                        if i not in node.path:
+                            new_path = node.path + [i]
+                            new_cost = node.cost + adj[node.path[-1]][i]
+                            if new_cost < best_cost:  # Poda imediata
+                                new_bound = bound(adj, new_path, new_cost)
+                                if new_bound < best_cost:
+                                    child_node = Node(new_bound, new_cost, node.level + 1, new_path)
+                                    heappush(pq, child_node)
+
+        return best_path, best_cost, flag_erro
