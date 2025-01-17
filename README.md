@@ -124,7 +124,7 @@ Caso não seja passado um valor, cada algoritmo será rodado com o tempo máximo
 ### Formato Geral do Comando
 
 ```bash
-python3 ./src/experiment.py [tempo] [verbose]
+python3 ./src/experiment.py [tempo]
 ```
 
 4. Após a execução, os resultados serão exibidos no terminal e salvos no arquivo `results.csv`.
